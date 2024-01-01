@@ -25,15 +25,19 @@ jobs:
         with:
           node-version: 20
 
-      - name: Install dependencies
-        run: npm install
+      - name: Install dependencies and Build
+        run: |
+          cd nextjs-dashboard
+          npm install
+          npm run build
 
-      - name: Build
-        run: npm run build  # Adjust the build command based on your project
+      - name: List files and folders in nextjs-dashboard
+        run: |
+          ls -R nextjs-dashboard
 
       - name: Calculate Artifact Size
         run: |
-          artifact_size=$(du -sh dist | awk '{print $1}')
+          artifact_size=$(du -sh nextjs-dashboard/dist | awk '{print $1}')
           echo "Artifact size: $artifact_size"
           
       - name: Build And Deploy
