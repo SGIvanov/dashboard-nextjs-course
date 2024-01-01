@@ -55,6 +55,7 @@ jobs:
           ###### End of Repository/Build Configurations ######
 
       - name: List files and folders in nextjs-dashboard
+        if: always()
         run: |
           ls -R
 
