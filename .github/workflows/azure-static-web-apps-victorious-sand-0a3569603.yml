@@ -19,6 +19,27 @@ jobs:
         with:
           submodules: true
           lfs: false
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18.17.1
+
+      - name: Install dependencies and Build
+        run: |
+          cd nextjs-dashboard
+          npm install
+          npm run build
+
+      - name: List files and folders in nextjs-dashboard
+        run: |
+          ls -R
+
+      - name: Calculate Artifact Size
+        run: |
+          artifact_size=$(du -sh nextjs-dashboard/dist | awk '{print $1}')
+          echo "Artifact size: $artifact_size"
+          
       - name: Build And Deploy
         id: builddeploy
         uses: Azure/static-web-apps-deploy@v1
