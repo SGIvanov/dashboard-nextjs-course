@@ -33,7 +33,7 @@ jobs:
 
       - name: List files and folders in nextjs-dashboard
         run: |
-          ls -R nextjs-dashboard
+          ls -R
 
       - name: Calculate Artifact Size
         run: |
